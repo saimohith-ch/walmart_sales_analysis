@@ -49,7 +49,7 @@ SELECT branch, day_name, no_transactions
 FROM (
     SELECT 
         branch,
-        DAYNAME(STR_TO_DATE(date, '%d/%m/%Y')) AS day_name,
+        DAY(STR_TO_DATE(date, '%d/%m/%Y')) AS day_name,
         COUNT(*) AS no_transactions,
         RANK() OVER(PARTITION BY branch ORDER BY COUNT(*) DESC) AS rank
     FROM walmart
